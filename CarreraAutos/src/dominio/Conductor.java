@@ -10,8 +10,11 @@ public class Conductor {
     private String nombre;
     private String cedula;
     private int carrerasGanadas;
+    private int posFinal;
 
     public Conductor() {
+        this.carrerasGanadas = 0;
+        this.posFinal = -1;
     }
 
     public Conductor(Carro carro, String nombre, String cedula) {
@@ -19,6 +22,7 @@ public class Conductor {
         this.nombre = nombre;
         this.cedula = cedula;
         this.carrerasGanadas = 0;
+        this.posFinal = -1;
     }
     
      public Conductor(Carro carro, String nombre, String cedula, int carrerasGanadas) {
@@ -26,6 +30,8 @@ public class Conductor {
         this.nombre = nombre;
         this.cedula = cedula;
         this.carrerasGanadas = carrerasGanadas;
+        this.carrerasGanadas = 0;
+        this.posFinal = -1;
     }
 
        
@@ -52,13 +58,25 @@ public class Conductor {
     public void setCedula(String cedula) {
         this.cedula = cedula;
     }
-
-    @Override
-    public String toString() {
-        return "Conductor{" + "carro=" + carro + ", nombre=" + nombre + ", cedula=" + cedula + '}';
+    public void setPosFinal(int posFinal) {
+        this.posFinal = posFinal;
     }
 
-   
+    public int getPosFinal() {
+       return this.posFinal;
+    }
+
+    public int getCarrerasGanadas() {
+        return this.carrerasGanadas;
+    }
+
+    public void setCarrerasGanadas(int carrerasGanadas) {
+        this.carrerasGanadas = carrerasGanadas;
+    }
     
-    
+    @Override
+    public String toString() {
+        return "Conductor{" + "carro=" + carro + ", nombre=" + nombre + ", cedula=" + cedula + ", carreras ganadas=" + carrerasGanadas +  '}';
+    }
+  
 }

@@ -36,7 +36,6 @@ public class VentanaJuego extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jButtonIngresoCorredor = new javax.swing.JButton();
-        jButtonIniciarCarrera = new javax.swing.JButton();
         jButtonNuevaCarrera = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
@@ -52,6 +51,7 @@ public class VentanaJuego extends javax.swing.JFrame {
         jTextArea1 = new javax.swing.JTextArea();
         jButtonAvanzar = new javax.swing.JButton();
         jButtonSalir = new javax.swing.JButton();
+        jButtonListarConductores = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -62,13 +62,6 @@ public class VentanaJuego extends javax.swing.JFrame {
         jButtonIngresoCorredor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonIngresoCorredorActionPerformed(evt);
-            }
-        });
-
-        jButtonIniciarCarrera.setText("Iniciar Carrera");
-        jButtonIniciarCarrera.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonIniciarCarreraActionPerformed(evt);
             }
         });
 
@@ -102,6 +95,7 @@ public class VentanaJuego extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTextArea1);
 
         jButtonAvanzar.setText("Avanzar");
+        jButtonAvanzar.setEnabled(false);
         jButtonAvanzar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAvanzarActionPerformed(evt);
@@ -115,6 +109,13 @@ public class VentanaJuego extends javax.swing.JFrame {
             }
         });
 
+        jButtonListarConductores.setText("Listar Conductores");
+        jButtonListarConductores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonListarConductoresActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -122,12 +123,9 @@ public class VentanaJuego extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(223, 223, 223)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(36, 36, 36)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -138,26 +136,26 @@ public class VentanaJuego extends javax.swing.JFrame {
                                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jLabel8)))
                                     .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButtonSalir, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(61, 61, 61)
-                                .addComponent(jButtonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jButtonIngresoCorredor)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButtonNuevaCarrera)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButtonListarConductores)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButtonAvanzar))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButtonIngresoCorredor)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButtonIniciarCarrera)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButtonNuevaCarrera)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButtonAvanzar)))
+                        .addGap(223, 223, 223)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(29, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -168,12 +166,16 @@ public class VentanaJuego extends javax.swing.JFrame {
                 .addGap(44, 44, 44)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonIngresoCorredor)
-                    .addComponent(jButtonIniciarCarrera)
+                    .addComponent(jButtonAvanzar)
                     .addComponent(jButtonNuevaCarrera)
-                    .addComponent(jButtonAvanzar))
+                    .addComponent(jButtonListarConductores))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
+                        .addGap(87, 87, 87)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(111, 111, 111)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -197,12 +199,9 @@ public class VentanaJuego extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel7))
                             .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(34, 34, 34)
-                        .addComponent(jButtonSalir))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(31, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonSalir)
+                        .addGap(44, 44, 44))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -248,25 +247,39 @@ public class VentanaJuego extends javax.swing.JFrame {
     
     private void jButtonNuevaCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNuevaCarreraActionPerformed
        int numConductores = Integer.parseInt(JOptionPane.showInputDialog("Ïngrese el numero de corredores: "));
-       int distanciaKM = Integer.parseInt(JOptionPane.showInputDialog("Ïngrese la distancia a recorrer: "));
+       int distanciaKM = Integer.parseInt(JOptionPane.showInputDialog("Ïngrese la distancia a recorrer(En Km): "));
        List<Conductor> listaConductores = solicitarConductores(numConductores);
        control.setLongitudCarriles(distanciaKM * 1000);
        control.setListaConductores(listaConductores);
-       
+       this.jButtonAvanzar.setEnabled(true);
     }//GEN-LAST:event_jButtonNuevaCarreraActionPerformed
 
-    private void jButtonIniciarCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIniciarCarreraActionPerformed
-        
-        
-    }//GEN-LAST:event_jButtonIniciarCarreraActionPerformed
-
     private void jButtonAvanzarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAvanzarActionPerformed
-        // TODO add your handling code here:
+        if(!control.carreraTerminada()) {
+           control.avanzar();
+        } else {
+            this.jButtonAvanzar.setEnabled(false);
+            JOptionPane.showMessageDialog(this,"La carrera ha terminado!\n" + this.control.getNomGanadores());
+            control.guardarPodio();
+        }       
     }//GEN-LAST:event_jButtonAvanzarActionPerformed
 
     private void jButtonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirActionPerformed
         System.exit(0);
     }//GEN-LAST:event_jButtonSalirActionPerformed
+
+    private void jButtonListarConductoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListarConductoresActionPerformed
+        List<Conductor> listaConductores = this.control.getListaConductores();
+        String acum = "Lista de conductores\n";
+        for(Conductor conductor : listaConductores){
+            acum += "Cedula: " + conductor.getCedula();
+            acum += " Nombre: " + conductor.getNombre();  
+            acum += " Marca: " + conductor.getCarro().getMarca();
+            acum += " Marca: " + conductor.getCarrerasGanadas();
+            acum += " Color: " + conductor.getCarro().getColor() + "\n";
+        }
+        JOptionPane.showMessageDialog(this, acum);
+    }//GEN-LAST:event_jButtonListarConductoresActionPerformed
 
     /**
      * @param args the command line arguments
@@ -306,7 +319,7 @@ public class VentanaJuego extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAvanzar;
     private javax.swing.JButton jButtonIngresoCorredor;
-    private javax.swing.JButton jButtonIniciarCarrera;
+    private javax.swing.JButton jButtonListarConductores;
     private javax.swing.JButton jButtonNuevaCarrera;
     private javax.swing.JButton jButtonSalir;
     private javax.swing.JLabel jLabel1;

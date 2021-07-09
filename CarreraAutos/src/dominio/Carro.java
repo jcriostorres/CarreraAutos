@@ -8,13 +8,15 @@ package dominio;
 public class Carro {
     private String color;
     private String marca;
-
+    private int avanceActual;
+    
     public Carro() {
     }
 
     public Carro(String color, String marca) {
         this.color = color;
         this.marca = marca;
+        this.avanceActual = 0;
     }
 
     public String getColor() {
@@ -31,6 +33,14 @@ public class Carro {
 
     public void setMarca(String marca) {
         this.marca = marca;
+    }
+
+    public int getAvanceActual() {
+        return this.avanceActual;
+    }
+
+    public void avanzar(int avanceActual) {
+        this.avanceActual += avanceActual;
     }
 
     @Override

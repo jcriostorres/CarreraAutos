@@ -4,6 +4,8 @@ package Modelo;
 import dominio.Carro;
 import dominio.Conductor;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -89,6 +91,56 @@ public class ManipulacionBD {
        }
         return(conductor);
     }
+
+    public void guardarPodio(String nom1erPuesto, String nom2doPuesto, String nom3erPuesto) {
+        Connection conexion =  this.conexionBD.conectarBD();
+        PreparedStatement ps;
+        int res;
+        if(conexion != null){
+           try{
+               ps = conexion.prepareStatement("INSERT INTO podios (nombre_1ra_posicion, nombre_2ra_posicion, nombre_3ra_posicion) VALUES(?,?,?)");
+               ps.setString(1,nom1erPuesto);
+               ps.setString(2,nom2doPuesto);
+               ps.setString(3,nom3erPuesto);
+              
+               res = ps.executeUpdate();
+               if(res > 0) {
+                   System.out.println("Ingreso exitoso.");
+               }
+           } catch(SQLException e) {
+               e.printStackTrace(System.out);
+           } finally {
+               conexion = null;
+           }
+       }
+    }
     
+    public List<Conductor> getListaConductores(){
+        Connection conexion =  this.conexionBD.conectarBD();
+        PreparedStatement ps;
+        ResultSet res;
+        List<Conductor> listaConductores = new ArrayList<>();
+        if(conexion != null){
+           try{
+               ps = conexion.prepareStatement("SELECT * FROM conductores");
+               res = ps.executeQuery();
+               while(res.next()) {
+                   String cedula = res.getString("cedula_conductor");
+                   String nombre = res.getString("nombre_conductor");
+                   int carrerasGanadas = res.getInt("carreras_ganadas");
+                   String color = res.getString("color_carro");
+                   String marca = res.getString("marca_carro");  
+                   Carro carro = new Carro(color, marca);
+                   Conductor conductor = new Conductor(carro, nombre, cedula, carrerasGanadas);
+                   listaConductores.add(conductor);
+               }
+           } catch(SQLException e) {
+               e.getClass().getSimpleName();
+           } finally {
+               conexion = null;
+           }
+       }
+        return(listaConductores);
+    }
     
 }

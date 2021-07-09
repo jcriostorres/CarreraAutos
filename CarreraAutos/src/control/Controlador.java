@@ -9,10 +9,12 @@ public class Controlador {
     private Juego juegoActual;
     private ManipulacionBD controlBD;
     private int longitudCarriles;
+    private int posFinal;
     
     public Controlador(){
         this.controlBD = new ManipulacionBD();
         this.juegoActual = null;
+        posFinal=1;
     }
 
     public void setLongitudCarriles(int longitudCarriles) {
@@ -42,10 +44,60 @@ public class Controlador {
         return(listaCarriles);
     }
     
+    public boolean carreraTerminada(){
+        boolean terminada= true;
+        for(Carril carril: juegoActual.getPista().getListaCarriles()){
+            if(carril.getCondutor().getCarro().getAvanceActual() < this.longitudCarriles){
+                terminada = false;
+                break;
+            }
+        }
+        return(terminada);
+    }
+    
     public void setListaConductores(List<Conductor> listaConductores) {
         List<Carril> listaCarriles = asignarCarriles(listaConductores);
         Pista pista = new Pista(listaCarriles);
         juegoActual = new Juego(pista);
+    }
+
+    public void avanzar() {
+        for(Carril carril : juegoActual.getPista().getListaCarriles()){
+            if(carril.getCondutor().getCarro().getAvanceActual() < this.longitudCarriles){
+                carril.getCondutor().getCarro().avanzar(Avance.obtenerAvance());
+            } else if(carril.getCondutor().getPosFinal() == -1){
+                carril.getCondutor().setPosFinal(posFinal++);
+            }
+        }
+    }
+
+    private String getNombrePorPosicion(int posFinal){
+        String nombre = "";
+        for(Carril carril : juegoActual.getPista().getListaCarriles()){
+            if(carril.getCondutor().getPosFinal() == posFinal){
+                nombre = carril.getCondutor().getNombre();
+            }
+        }
+        return(nombre);
+    }
+    
+    public void guardarPodio() {
+        String nom1erPuesto = this.getNombrePorPosicion(1);
+        String nom2doPuesto = this.getNombrePorPosicion(2);
+        String nom3erPuesto = this.getNombrePorPosicion(3);
+        this.controlBD.guardarPodio(nom1erPuesto,nom2doPuesto,nom3erPuesto);
+    }
+
+    public String getNomGanadores() {
+        String cadenaRetorno = "Primer puesto: " + this.getNombrePorPosicion(1) + "\n" +
+            "Segundo Puesto" + this.getNombrePorPosicion(2) + "\n" +
+            "Tercer Puesto" + this.getNombrePorPosicion(3);
+        return(cadenaRetorno);
+    }
+
+    public List<Conductor> getListaConductores() {
+        List<Conductor> listaConductores = this.controlBD.getListaConductores();
+        return(listaConductores);
     }
 
     
