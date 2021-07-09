@@ -22,6 +22,7 @@ public class VentanaJuego extends javax.swing.JFrame {
     public VentanaJuego() {
         control = new Controlador();
         initComponents();
+        this.setResizable(false);
     }
 
     /**
@@ -38,26 +39,29 @@ public class VentanaJuego extends javax.swing.JFrame {
         jButtonIngresoCorredor = new javax.swing.JButton();
         jButtonNuevaCarrera = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jTextFieldNumCorredores = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        jTextFieldLongPista = new javax.swing.JTextField();
+        jTextFieldNumCorredMeta = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jTextAreaListadoPosiciones = new javax.swing.JTextArea();
         jButtonAvanzar = new javax.swing.JButton();
         jButtonSalir = new javax.swing.JButton();
         jButtonListarConductores = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jPanel1.setBackground(new java.awt.Color(205, 240, 234));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("Carreras de Carros");
 
+        jButtonIngresoCorredor.setFont(new java.awt.Font("Dialog", 0, 13)); // NOI18N
         jButtonIngresoCorredor.setText("Ingresar Corredor");
         jButtonIngresoCorredor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -65,6 +69,7 @@ public class VentanaJuego extends javax.swing.JFrame {
             }
         });
 
+        jButtonNuevaCarrera.setFont(new java.awt.Font("Dialog", 0, 13)); // NOI18N
         jButtonNuevaCarrera.setText("Nueva Carrera");
         jButtonNuevaCarrera.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,28 +77,45 @@ public class VentanaJuego extends javax.swing.JFrame {
             }
         });
 
-        jTextField1.setEditable(false);
+        jTextFieldNumCorredores.setEditable(false);
+        jTextFieldNumCorredores.setFont(new java.awt.Font("Dialog", 0, 36)); // NOI18N
+        jTextFieldNumCorredores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldNumCorredoresActionPerformed(evt);
+            }
+        });
 
+        jLabel3.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel3.setText("Numero de Corredores");
 
+        jLabel4.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel4.setText("en la Actual Carrera");
 
+        jLabel5.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel5.setText("Longitud de la Pista");
 
+        jLabel6.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel6.setText("Actual (Kilometros)");
 
-        jTextField2.setEditable(false);
+        jTextFieldLongPista.setEditable(false);
+        jTextFieldLongPista.setFont(new java.awt.Font("Dialog", 0, 36)); // NOI18N
 
-        jTextField3.setEditable(false);
+        jTextFieldNumCorredMeta.setEditable(false);
+        jTextFieldNumCorredMeta.setFont(new java.awt.Font("Dialog", 0, 36)); // NOI18N
 
-        jLabel7.setText("en la Actual Carrera");
+        jLabel7.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel7.setText("En la Linea de Meta");
 
+        jLabel8.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel8.setText("Numero de Corredores");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        jTextAreaListadoPosiciones.setEditable(false);
+        jTextAreaListadoPosiciones.setBackground(new java.awt.Color(255, 255, 255));
+        jTextAreaListadoPosiciones.setColumns(20);
+        jTextAreaListadoPosiciones.setRows(5);
+        jScrollPane1.setViewportView(jTextAreaListadoPosiciones);
 
+        jButtonAvanzar.setFont(new java.awt.Font("Dialog", 0, 13)); // NOI18N
         jButtonAvanzar.setText("Avanzar");
         jButtonAvanzar.setEnabled(false);
         jButtonAvanzar.addActionListener(new java.awt.event.ActionListener() {
@@ -102,6 +124,7 @@ public class VentanaJuego extends javax.swing.JFrame {
             }
         });
 
+        jButtonSalir.setFont(new java.awt.Font("Dialog", 0, 13)); // NOI18N
         jButtonSalir.setText("Salir");
         jButtonSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,6 +132,7 @@ public class VentanaJuego extends javax.swing.JFrame {
             }
         });
 
+        jButtonListarConductores.setFont(new java.awt.Font("Dialog", 0, 13)); // NOI18N
         jButtonListarConductores.setText("Listar Conductores");
         jButtonListarConductores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,25 +151,30 @@ public class VentanaJuego extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jLabel2)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(jLabel8)))
+                                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jButtonSalir, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jTextFieldLongPista, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jTextFieldNumCorredMeta, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel8)))
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButtonSalir, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(jLabel3)
+                                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jTextFieldNumCorredores, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(18, 18, 18)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jButtonIngresoCorredor)
                                 .addGap(18, 18, 18)
                                 .addComponent(jButtonNuevaCarrera)
@@ -154,16 +183,16 @@ public class VentanaJuego extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(jButtonAvanzar))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(223, 223, 223)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(29, Short.MAX_VALUE))
+                        .addGap(166, 166, 166)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(38, 38, 38)
                 .addComponent(jLabel1)
-                .addGap(44, 44, 44)
+                .addGap(39, 39, 39)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonIngresoCorredor)
                     .addComponent(jButtonAvanzar)
@@ -171,34 +200,32 @@ public class VentanaJuego extends javax.swing.JFrame {
                     .addComponent(jButtonListarConductores))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(87, 87, 87)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(26, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(111, 111, 111)
+                        .addGap(42, 42, 42)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel6)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel3)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel4))
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(28, 28, 28)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel5)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel6))))
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(23, 23, 23)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel4))
+                                    .addComponent(jTextFieldNumCorredores, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(49, 49, 49)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextFieldLongPista, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel5))))
+                        .addGap(49, 49, 49)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextFieldNumCorredMeta, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel7))
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel7)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButtonSalir)
                         .addGap(44, 44, 44))))
@@ -254,11 +281,45 @@ public class VentanaJuego extends javax.swing.JFrame {
        this.jButtonAvanzar.setEnabled(true);
     }//GEN-LAST:event_jButtonNuevaCarreraActionPerformed
 
+    
+    
+    public void listarCorrEnOrdenASC(){
+        List<Carril> listaCarriles = this.control.getListadeParticipantes();
+        this.jTextAreaListadoPosiciones.setText("Listado Actualde la carrera\n");
+        for(Carril carril : listaCarriles){
+            this.jTextAreaListadoPosiciones.append("Cedula: " + carril.getConductor().getCedula() + ", Nombre: " + carril.getConductor().getNombre() + "\n");
+            this.jTextAreaListadoPosiciones.append("Marca: " + carril.getConductor().getCarro().getMarca() + ", Color: " + carril.getConductor().getCarro().getColor() + "\n");
+            this.jTextAreaListadoPosiciones.append("Distancia Actual Recorrida: : " + carril.getConductor().getCarro().getAvanceActual() + "\n\n");
+        }
+    }
+    
+    private void actualizarDatosVista(){
+        int cantCompetidores = this.control.getCantidadParticipantes();
+        this.jTextFieldNumCorredores.setText(String.valueOf(cantCompetidores));
+        
+        int longCarriles = this.control.getLongitudCarriles()/1000;
+        this.jTextFieldLongPista.setText(String.valueOf(longCarriles));
+        
+        int numCorrEnMeta = this.control.getCantConductoresMeta();
+        this.jTextFieldNumCorredMeta.setText(String.valueOf(numCorrEnMeta));
+    
+        this.listarCorrEnOrdenASC();
+    }
+    
+    private void limpiarDatosVista(){
+        this.jTextFieldLongPista.setText("");
+        this.jTextFieldNumCorredores.setText("");
+        this.jTextFieldNumCorredMeta.setText("");
+        this.jTextAreaListadoPosiciones.setText("");
+    }
+    
     private void jButtonAvanzarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAvanzarActionPerformed
         if(!control.carreraTerminada()) {
            control.avanzar();
+           this.actualizarDatosVista();
         } else {
             this.jButtonAvanzar.setEnabled(false);
+            this.limpiarDatosVista();
             JOptionPane.showMessageDialog(this,"La carrera ha terminado!\n" + this.control.getNomGanadores());
             control.guardarPodio();
         }       
@@ -280,6 +341,10 @@ public class VentanaJuego extends javax.swing.JFrame {
         }
         JOptionPane.showMessageDialog(this, acum);
     }//GEN-LAST:event_jButtonListarConductoresActionPerformed
+
+    private void jTextFieldNumCorredoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNumCorredoresActionPerformed
+       
+    }//GEN-LAST:event_jTextFieldNumCorredoresActionPerformed
 
     /**
      * @param args the command line arguments
@@ -332,9 +397,9 @@ public class VentanaJuego extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextArea jTextAreaListadoPosiciones;
+    private javax.swing.JTextField jTextFieldLongPista;
+    private javax.swing.JTextField jTextFieldNumCorredMeta;
+    private javax.swing.JTextField jTextFieldNumCorredores;
     // End of variables declaration//GEN-END:variables
 }

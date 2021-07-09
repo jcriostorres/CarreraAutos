@@ -9,15 +9,15 @@ public class Carril {
     
     private int longitud;
     private int numCarril;
-    private Conductor condutor;
+    private Conductor conductor;
 
     public Carril() {
     }
 
-    public Carril(int longitud, int numCarril, Conductor condutor) {
+    public Carril(int longitud, int numCarril, Conductor conductor) {
         this.longitud = longitud;
         this.numCarril = numCarril;
-        this.condutor = condutor;
+        this.conductor = conductor;
     }
 
     public int getLongitud() {
@@ -36,17 +36,17 @@ public class Carril {
         this.numCarril = numCarril;
     }
 
-    public Conductor getCondutor() {
-        return condutor;
+    public Conductor getConductor() {
+        return conductor;
     }
 
-    public void setCondutor(Conductor condutor) {
-        this.condutor = condutor;
+    public void setConductor(Conductor conductor) {
+        this.conductor = conductor;
     }
 
     @Override
     public String toString() {
-        return "Carril{" + "longitud=" + longitud + ", numCarril=" + numCarril + ", condutor=" + condutor + '}';
+        return "Carril{" + "longitud=" + longitud + ", numCarril=" + numCarril + ", conductor=" + conductor + '}';
     }
     
     

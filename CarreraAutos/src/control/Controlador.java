@@ -16,6 +16,14 @@ public class Controlador {
         this.juegoActual = null;
         posFinal=1;
     }
+    
+    public int getCantidadParticipantes(){
+        return(juegoActual.getPista().getListaCarriles().size());
+    }
+    
+    public int getLongitudCarriles(){
+        return(this.longitudCarriles);
+    }
 
     public void setLongitudCarriles(int longitudCarriles) {
         this.longitudCarriles = longitudCarriles;
@@ -30,6 +38,10 @@ public class Controlador {
         return(this.controlBD.existeUsuario(cedula));
     }
 
+    public List<Carril> getListadeParticipantes(){
+        return(this.juegoActual.getPista().getListaCarriles());
+    }
+    
     public Conductor getConductor(String cedula) {
         Conductor conductor = this.controlBD.getConductor(cedula);
         return(conductor);
@@ -47,7 +59,7 @@ public class Controlador {
     public boolean carreraTerminada(){
         boolean terminada= true;
         for(Carril carril: juegoActual.getPista().getListaCarriles()){
-            if(carril.getCondutor().getCarro().getAvanceActual() < this.longitudCarriles){
+            if(carril.getConductor().getCarro().getAvanceActual() < this.longitudCarriles){
                 terminada = false;
                 break;
             }
@@ -63,10 +75,10 @@ public class Controlador {
 
     public void avanzar() {
         for(Carril carril : juegoActual.getPista().getListaCarriles()){
-            if(carril.getCondutor().getCarro().getAvanceActual() < this.longitudCarriles){
-                carril.getCondutor().getCarro().avanzar(Avance.obtenerAvance());
-            } else if(carril.getCondutor().getPosFinal() == -1){
-                carril.getCondutor().setPosFinal(posFinal++);
+            if(carril.getConductor().getCarro().getAvanceActual() < this.longitudCarriles){
+                carril.getConductor().getCarro().avanzar(Avance.obtenerAvance());
+            } else if(carril.getConductor().getPosFinal() == -1){
+                carril.getConductor().setPosFinal(posFinal++);
             }
         }
     }
@@ -74,8 +86,8 @@ public class Controlador {
     private String getNombrePorPosicion(int posFinal){
         String nombre = "";
         for(Carril carril : juegoActual.getPista().getListaCarriles()){
-            if(carril.getCondutor().getPosFinal() == posFinal){
-                nombre = carril.getCondutor().getNombre();
+            if(carril.getConductor().getPosFinal() == posFinal){
+                nombre = carril.getConductor().getNombre();
             }
         }
         return(nombre);
@@ -100,7 +112,13 @@ public class Controlador {
         return(listaConductores);
     }
 
-    
-  
-    
+    public int getCantConductoresMeta() {
+        int numCorrEnMeta = 0;
+        for(Carril carril : juegoActual.getPista().getListaCarriles()){
+            if(!(carril.getConductor().getCarro().getAvanceActual() < this.longitudCarriles)){
+                numCorrEnMeta++;
+            } 
+        }
+        return (numCorrEnMeta);
+    }
 }
