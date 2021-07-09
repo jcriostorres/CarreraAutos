@@ -56,7 +56,7 @@ public class VentanaJuego extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(205, 240, 234));
+        jPanel1.setBackground(new java.awt.Color(227, 205, 193));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("Carreras de Carros");
