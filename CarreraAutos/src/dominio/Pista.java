@@ -1,14 +1,34 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package dominio;
+
+import java.util.List;
 
 /**
  *
  * @author catalina
  */
 public class Pista {
+    private List<Carril> listaCarriles;
+
+    public Pista() {
+    }
+
+    public Pista(List<Carril> listaCarriles) {
+        this.listaCarriles = listaCarriles;
+    }
+
+    public List<Carril> getListaCarriles() {
+        return listaCarriles;
+    }
+
+    public void setListaCarriles(List<Carril> listaCarriles) {
+        this.listaCarriles = listaCarriles;
+    }
+
+    @Override
+    public String toString() {
+        return "Pista{" + "listaCarriles=" + listaCarriles + '}';
+    }
     
+        
 }
