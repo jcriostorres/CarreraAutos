@@ -13,10 +13,6 @@ public class Pista {
     public Pista() {
     }
 
-    public Pista(List<Carril> listaCarriles) {
-        this.listaCarriles = listaCarriles;
-    }
-
     public List<Carril> getListaCarriles() {
         return listaCarriles;
     }

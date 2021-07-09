@@ -8,6 +8,7 @@ package dominio;
 public class Conductor {
     private Carro carro;
     private String nombre;
+    private String cedula;
 
     public Conductor() {
     }
@@ -32,6 +33,14 @@ public class Conductor {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String getCedula() {
+        return cedula;
+    }
+
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
     }
 
     @Override
