@@ -9,13 +9,23 @@ public class Conductor {
     private Carro carro;
     private String nombre;
     private String cedula;
+    private int carrerasGanadas;
 
     public Conductor() {
     }
 
-    public Conductor(Carro carro, String nombre) {
+    public Conductor(Carro carro, String nombre, String cedula) {
         this.carro = carro;
         this.nombre = nombre;
+        this.cedula = cedula;
+        this.carrerasGanadas = 0;
+    }
+    
+     public Conductor(Carro carro, String nombre, String cedula, int carrerasGanadas) {
+        this.carro = carro;
+        this.nombre = nombre;
+        this.cedula = cedula;
+        this.carrerasGanadas = carrerasGanadas;
     }
 
        
@@ -45,9 +55,10 @@ public class Conductor {
 
     @Override
     public String toString() {
-        return "Conductor{" + "carro=" + carro + ", nombre=" + nombre + '}';
+        return "Conductor{" + "carro=" + carro + ", nombre=" + nombre + ", cedula=" + cedula + '}';
     }
-    
+
+   
     
     
 }
